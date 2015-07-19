@@ -1,8 +1,13 @@
 # itobot
 Respect For Mr.Ito
 
+## How to use
+preparing..
 
-## usage of handlebars with gulp
+## Structure
+Slim + Backbone + Handlebars
+
+## Handlebars with gulp
 
 ```
 $ npm init

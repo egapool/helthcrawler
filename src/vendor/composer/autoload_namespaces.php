@@ -7,5 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Slim' => array($vendorDir . '/slim/slim'),
-    'RedBean' => array($vendorDir . '/gabordemooij/slim'),
+    'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
 );

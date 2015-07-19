@@ -19,5 +19,9 @@ $(function(){
         el: this.$el.find('#urllist')
       });
     },
+
+    render: function(){
+      return this.$el;
+    }
   });
 });

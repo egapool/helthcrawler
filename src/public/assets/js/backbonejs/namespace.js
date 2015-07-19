@@ -2,7 +2,7 @@ var MyApp = {
   Models: {},
   Collections:{},
   Views:{},
-  App: {},
+  Router: {},
   Templates: {},
   Helper: {},
 };

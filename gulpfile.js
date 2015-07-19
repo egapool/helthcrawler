@@ -5,7 +5,7 @@ var declare     = require('gulp-declare');
 var concat      = require('gulp-concat');
 
 // path
-var hbs   = 'src/public/assets/hbs/*.hbs';
+var hbs   = 'src/public/hbs/*.hbs';
 var dest  = 'src/public/assets/js/backbonejs/templates';
 
 gulp.task('hbs', function(){

@@ -8,5 +8,11 @@
 <body>
     <div id="app"></div>
     <script src="/javascript.php"></script>
+    <script>
+    $(function(){
+        var App = new MyApp.Router();
+        Backbone.history.start({ pushState:true});
+    });
+    </script>
 </body>
 </html>

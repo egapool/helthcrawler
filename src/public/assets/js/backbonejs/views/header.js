@@ -1,15 +1,12 @@
-$(function(){
+MyApp.Views.Header = Backbone.View.extend({
 
-  MyApp.Views.Header = Backbone.View.extend({
+  tmpl: MyApp.Templates.header,
 
-    tmpl: MyApp.Templates.header,
+  events: {
 
-    events: {
+  },
 
-    },
-
-    initialize: function() {
-       this.$el.html(this.tmpl());
-    },
-  });
+  initialize: function() {
+     this.$el.html(this.tmpl());
+  },
 });

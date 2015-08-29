@@ -22,7 +22,6 @@ $js = new AssetCollection(array(
     new FileAsset(__DIR__."/assets/js/backbonejs/models/url.js"),
     new FileAsset(__DIR__."/assets/js/backbonejs/collections/urllist.js"),
     new FileAsset(__DIR__."/assets/js/backbonejs/router.js"),
-    // new FileAsset(__DIR__.'/application.js'),
 ));
 
 header('Content-Type: application/js');

@@ -1,15 +1,12 @@
-$(function(){
+MyApp.Views.Urllist = Backbone.View.extend({
 
-  MyApp.Views.Urllist = Backbone.View.extend({
+  tmpl: MyApp.Templates.urllist,
 
-    tmpl: MyApp.Templates.urllist,
+  events: {
 
-    events: {
+  },
 
-    },
-
-    initialize: function() {
-       this.$el.html(this.tmpl());
-    },
-  });
+  initialize: function() {
+     this.$el.html(this.tmpl());
+  },
 });

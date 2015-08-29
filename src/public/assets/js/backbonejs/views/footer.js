@@ -1,15 +1,11 @@
-$(function(){
+MyApp.Views.Footer = Backbone.View.extend({
+  tmpl: MyApp.Templates.footer,
 
-  MyApp.Views.Footer = Backbone.View.extend({
+  events: {
 
-    tmpl: MyApp.Templates.footer,
+  },
 
-    events: {
-
-    },
-
-    initialize: function() {
-       this.$el.html(this.tmpl());
-    },
-  });
+  initialize: function() {
+     this.$el.html(this.tmpl());
+  },
 });

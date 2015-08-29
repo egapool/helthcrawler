@@ -1,51 +1,41 @@
-$(function(){
+MyApp.Router = Backbone.Router.extend({
+  el: $("#app"),
 
-  MyApp.Router = Backbone.Router.extend({
+  tmpl: MyApp.Templates.layout,
 
-    el: $("#app"),
+  viewCache: {},
 
-    tmpl: MyApp.Templates.layout,
+  initialize: function() {
 
-    viewCache: {},
+    MyApp.mediator = {};
+    _.extend(MyApp.mediator, Backbone.Events);
 
-    initialize: function() {
+    this.el.html(this.tmpl());
 
-      MyApp.mediator = {};
-      _.extend(MyApp.mediator, Backbone.Events);
+    this.header = new MyApp.Views.Header({
+      el: this.el.find('#header')
+    });
 
-      this.el.html(this.tmpl());
+    this.footer = new MyApp.Views.Footer({
+      el: this.el.find('#footer')
+    });
 
-      this.header = new MyApp.Views.Header({
-        el: this.el.find('#header')
-      });
+    this.container = new MyApp.Views.Container({el:$('#content')});
 
-      this.footer = new MyApp.Views.Footer({
-        el: this.el.find('#footer')
-      });
+    // this.listenTo(Todays, 'all', this.render);
+  },
 
-      this.container = new MyApp.Views.Container({el:$('#content')});
+  routes: {
+    '/': 'index',
+    '': 'index',
+  },
 
-      // this.listenTo(Todays, 'all', this.render);
-    },
-
-    routes: {
-      '/': 'index',
-      '': 'index',
-    },
-
-    index: function(){
-      console.log('index page');
-      if ( this.viewCache.index === undefined ) {
-        this.viewCache.index = new MyApp.Views.Urlpage();
-      }
-      this.container.inner = this.viewCache.index;
-      this.container.render();
-    },
-
-
-  });
-
-  var App = new MyApp.Router();
-  Backbone.history.start({ pushState:true});
-
+  index: function(){
+    console.log('index page');
+    if ( this.viewCache.index === undefined ) {
+      this.viewCache.index = new MyApp.Views.Urlpage();
+    }
+    this.container.inner = this.viewCache.index;
+    this.container.render();
+  },
 });

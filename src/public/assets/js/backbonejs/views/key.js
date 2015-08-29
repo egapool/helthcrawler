@@ -1,15 +1,11 @@
-$(function(){
+MyApp.Views.Key = Backbone.View.extend({
+  tmpl: MyApp.Templates.key,
 
-  MyApp.Views.Key = Backbone.View.extend({
+  events: {
 
-    tmpl: MyApp.Templates.key,
+  },
 
-    events: {
-
-    },
-
-    initialize: function() {
-       this.$el.html(this.tmpl());
-    },
-  });
+  initialize: function() {
+     this.$el.html(this.tmpl());
+  },
 });

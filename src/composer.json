@@ -1,7 +1,0 @@
-{
-    "require" : {
-        "slim/slim":"2.*",
-        "gabordemooij/redbean": "dev-master",
-        "kriswallsmith/assetic": "*@dev"
-    }
-}

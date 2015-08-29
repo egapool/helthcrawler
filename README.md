@@ -1,19 +1,6 @@
-# itobot
-Respect For Mr.Ito
+# todo
 
-## How to use
-preparing..
-
-## Structure
-Slim + Backbone + Handlebars
-
-## Handlebars with gulp
-
-```
-$ npm init
-
-$ npm install --save-dev gulp gulp-handlebars gulp-wrap gulp-declare gulp-concat
-
-// 監視
-$ gulp
-```
++ ステータスコード取得
++ エラー時の対応
++ アサートモードか取得モードでviewの切り替え
++ アドレス／メタタグ情報の保存（めんどい）

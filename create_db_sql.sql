@@ -1,0 +1,1 @@
+CREATE DATABASE itobot;ALTER DATABASE `itobot` default character set utf8;

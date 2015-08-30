@@ -10,6 +10,18 @@
 				<input type="text" name="basicpass" class="form-control" id="basicPass" placeholder="password">
 			</div>
 			<textarea name="urls" class="form-control" rows="8"></textarea>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="mode" id="optionsRadios1" value="1" checked>
+			    取得モード
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="mode" id="optionsRadios2" value="2">
+			    一致モード
+			  </label>
+			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-default">ITO!</button>
 			</div>

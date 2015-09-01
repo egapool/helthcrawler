@@ -5,16 +5,20 @@ require_once dirname(__FILE__).'/../../vendor/parser.php';
 class Controller_Crawler extends Controller_Base
 {
 	private $metas = array('title','keywords','description','canonical','prev','next','author');
+
 	public function action_index()
 	{
+		// var_dump($_SERVER['HTTP_USER_AGENT']);die;
 		// 結果
 		$results 	= array();
 		$url 		= "";
 		$statusCode = "";
 		$post 		= Input::post();
+		// var_dump($post);
 		$inputs 	= $this->parseUrls($post['urls']);
 		//var_dump($inputs);die;
 		$parser 	= new Parser();
+		$parser->setDevice( (int)$post['device']);
 
 		foreach ($inputs as $input ) {
 			$input_url = $input[0];
@@ -54,7 +58,7 @@ class Controller_Crawler extends Controller_Base
 
 		}
 
-		Debug::dump($results);
+		// Debug::dump($results);
 
 		// change view file by mode
 		if ( $post['mode'] === "1" ) {

@@ -22,3 +22,6 @@ require COREPATH.'bootstrap.php';
 
 // Initialize the framework with the config file.
 \Fuel::init('config.php');
+
+// for mb_convert_encoding
+mb_language("Japanese");

@@ -9,23 +9,34 @@ class Parser
 	private $statusCode;
 
 	public function __construct(){
-		mb_language("Japanese");
 	}
 
 	public function setUrl($url)
 	{
-		$context = stream_context_create(array(
-		    'http' => array('ignore_errors' => true)
-		));
+		$options = array(
+			'http' => array(
+				'ignore_errors' => true,
+				'method' => 'GET',
+			),
+		);
+
+		if ( $this->device === 2 ) //sp
+		{
+			$options['http']['header'] = 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53';
+		}
+		else if ( $this->device === 3 ) //mb
+		{
+			$options['http']['header'] = 'User-agent: KDDI-CA39 UP.Browser/6.2.0.13.1.5 (GUI) MMP/2.0';
+		}
+		$context = stream_context_create($options);
 		$this->html = mb_convert_encoding(file_get_contents($url,false,$context), 'UTF-8', 'auto');
 		$this->statusCode = $this->parseStatusCode($http_response_header[0]);
-		var_dump($this->statusCode);
 		sleep(1);
 	}
 
 	public function setDevice($deviceId)
 	{
-		if ( $deviceId !== 1 || $deviceId !== 2 || $deviceId !== 3 ) return;
+		if ( $deviceId !== 1 && $deviceId !== 2 && $deviceId !== 3 ) return;
 		$this->device = $deviceId;
 	}
 

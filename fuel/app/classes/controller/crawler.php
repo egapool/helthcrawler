@@ -52,7 +52,8 @@ class Controller_Crawler extends Controller_Base
 				);
 			}
 			$results[] = array_merge(array(
-				'url'		=> $url,
+				'url'		=> $input_url,
+				'authedUrl' => $url,
 				'statusCode'=> $statusCode,
 			),$res);
 

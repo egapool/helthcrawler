@@ -16,7 +16,7 @@
                 <?php //var_dump($results); ?>
                 <?php foreach ($results as $res ): ?>
                 <tr>
-                    <td><a href="<?php echo $res['url']; ?>" target="_blank"><?php echo $res['url']; ?></a></td>
+                    <td><a href="<?php echo $res['authedUrl']; ?>" target="_blank"><?php echo $res['url']; ?></a></td>
                     <td><?php echo $res['title']['obtain']; ?></td>
                     <td><?php echo $res['keywords']['obtain']; ?></td>
                     <td><?php echo $res['description']['obtain']; ?></td>

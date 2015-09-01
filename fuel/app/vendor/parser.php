@@ -4,14 +4,34 @@ class Parser
 {
 	private $html;
 
-	public function __construct(){
+	private $device = 1;
 
+	private $statusCode;
+
+	public function __construct(){
+		mb_language("Japanese");
 	}
 
 	public function setUrl($url)
 	{
-		$this->html = mb_convert_encoding(file_get_contents($url), 'UTF-8', 'auto');
+		$context = stream_context_create(array(
+		    'http' => array('ignore_errors' => true)
+		));
+		$this->html = mb_convert_encoding(file_get_contents($url,false,$context), 'UTF-8', 'auto');
+		$this->statusCode = $this->parseStatusCode($http_response_header[0]);
+		var_dump($this->statusCode);
 		sleep(1);
+	}
+
+	public function setDevice($deviceId)
+	{
+		if ( $deviceId !== 1 || $deviceId !== 2 || $deviceId !== 3 ) return;
+		$this->device = $deviceId;
+	}
+
+	public function statusCode()
+	{
+		return $this->statusCode;
 	}
 
 	public function clear()
@@ -78,5 +98,12 @@ class Parser
 		preg_match($reg, $this->html, $matches);
 
 		return isset($matches[1]) ? $matches[1] : "";
+	}
+
+	private function parseStatusCode($response)
+	{
+		if ( preg_match('/([0-9]{3})/',$response,$matches)) {
+			return $matches[0];
+		}
 	}
 }

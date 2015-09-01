@@ -8,39 +8,32 @@ class Controller_Crawler extends Controller_Base
 	public function action_index()
 	{
 		// 結果
-		$results = array();
-		$post = Input::post();
-		var_dump($post);
-		$inputs = $this->parseUrls($post['urls']);
+		$results 	= array();
+		$url 		= "";
+		$statusCode = "";
+		$post 		= Input::post();
+		$inputs 	= $this->parseUrls($post['urls']);
 		//var_dump($inputs);die;
-		$parser = new Parser();
+		$parser 	= new Parser();
 
 		foreach ($inputs as $input ) {
 			$input_url = $input[0];
-			$data_i = array(
-				'title' 		=> isset($input[1])?$input[1]:"",
-				'keywords' 		=> isset($input[2])?$input[2]:"",
-				'description' 	=> isset($input[3])?$input[3]:"",
-				'canonical' 	=> isset($input[4])?$input[4]:"",
-				'prev'			=> isset($input[5])?$input[5]:"",
-				'next' 			=> isset($input[6])?$input[6]:"",
-				'author' 		=> isset($input[7])?$input[7]:"",
-			);
+			$data_i = array();
+			foreach($this->metas as $key => $meta ) {
+				$data_i[$meta] = isset($input[$key])?$input[$key]:"";
+			}
+
 			$url = $this->makeUrl($input_url,$post['basicuser'],$post['basicpass']);
 
 			try {
 				$parser->clear();
 				$parser->setUrl($url);
+				$statusCode = $parser->statusCode();
 				//var_dump($parser->html());die;
-				$data_g = array(
-					'title' 		=> $parser->title(),
-					'keywords' 		=> $parser->keywords(),
-					'description' 	=> $parser->description(),
-					'canonical' 	=> $parser->canonical(),
-					'prev' 			=> $parser->prev(),
-					'next' 			=> $parser->next(),
-					'author' 		=> $parser->author(),
-				);
+				$data_g = array();
+				foreach ( $this->metas as $key => $meta ) {
+					$data_g[$meta] = $parser->$meta();
+				}
 
 				// var_dump($title,$keywords,$description,$canonical);
 			} catch(Exception $e ) {
@@ -49,12 +42,15 @@ class Controller_Crawler extends Controller_Base
 			$res = array();
 			foreach ($this->metas as $meta ) {
 				$res[$meta] = array(
-					'assert' => $data_g[$meta] === $data_i[$meta],
-					'input' => $data_i[$meta],
-					'obtain' => $data_g[$meta],
+					'assert'=> $data_g[$meta] === $data_i[$meta],
+					'input'	=> $data_i[$meta],
+					'obtain'=> $data_g[$meta],
 				);
 			}
-			$results[] = array_merge(array('url' => $url),$res);
+			$results[] = array_merge(array(
+				'url'		=> $url,
+				'statusCode'=> $statusCode,
+			),$res);
 
 		}
 

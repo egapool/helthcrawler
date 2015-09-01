@@ -11,6 +11,7 @@
                     <td>prev</td>
                     <td>next</td>
                     <td>author</td>
+                    <td>statusCode</td>
                 </tr>
                 <?php //var_dump($results); ?>
                 <?php foreach ($results as $res ): ?>
@@ -23,6 +24,7 @@
                     <td><?php echo $res['prev']['obtain']; ?></td>
                     <td><?php echo $res['next']['obtain']; ?></td>
                     <td><?php echo $res['author']['obtain']; ?></td>
+                    <td><?php echo $res['statusCode']; ?></td>
                 </tr>
                 <?php endforeach; ?>
             </table>

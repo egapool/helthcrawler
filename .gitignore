@@ -1,1 +1,38 @@
+fuel/app/config/db.php
 fuel/app/logs/
+.settings/
+.htaccess
+.thumbs
+Thumbs.db
+
+# Mac OS X
+.DS_Store
+
+# FuelPHP
+fuel/app/tmp
+fuel/app/cache
+fuel/app/config/development
+fuel/app/config/staging
+fuel/app/config/production
+fuel/app/config/development/
+fuel/app/config/staging/
+fuel/app/config/production/
+fuel/app/config/test/
+fuel/app/logs
+public/.htaccess
+public/sitemap.xml
+public/BingSiteAuth.xml
+public/rss/rss.xml
+public/assets/tmp
+
+# sitemap
+public/_sitemap*.xml
+public/robots.txt
+
+# npm
+node_modules/
+.sass-cache/
+/package.json
+
+# handlbars
+public/assets/js/backbonejs/templates/layout.js

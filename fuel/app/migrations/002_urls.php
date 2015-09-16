@@ -11,6 +11,7 @@ class Urls
             'id'            => array('type' => 'int',       'constraint' => 5),
             'site_id'       => array('type' => 'int',       'constraint' => 5),
             'url'           => array('type' => 'varchar',   'constraint' => 255),
+            'device'        => array('type' => 'int',       'constraint' => 1),
             'title'         => array('type' => 'varchar',   'constraint' => 255),
             'keywords'      => array('type' => 'varchar',   'constraint' => 255),
             'description'   => array('type' => 'text'),

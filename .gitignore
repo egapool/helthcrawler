@@ -33,6 +33,7 @@ public/robots.txt
 node_modules/
 .sass-cache/
 /package.json
+gulpfile.js
 
 # handlbars
 public/assets/js/backbonejs/templates/layout.js

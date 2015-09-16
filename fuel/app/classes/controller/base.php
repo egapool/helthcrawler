@@ -11,7 +11,7 @@ class Controller_Base extends Controller_Hybrid
 		parent::before();
 
 		$this->css .=  Asset::css("bootstrap.min.css");
-		$this->js .=  Asset::js("jquery.min.js");
+		$this->js .=  Asset::js("vendor/jquery.min.js");
 	}
 
 	public function after($response)

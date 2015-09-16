@@ -9,11 +9,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="">
 <?php echo $css ?>
-<?php echo $js ?>
 </head>
 <body>
-	<div id="header">header desu</div>
-	<?php echo $content; ?>
-	<div id="footer">footer desu</div>
+    <div id="app"></div>
+    <?php echo $js ?>
+    <script>
+    $(function(){
+        var App = new MyApp.Router();
+        Backbone.history.start({pushState:true});
+    });
+    </script>
 </body>
 </html>

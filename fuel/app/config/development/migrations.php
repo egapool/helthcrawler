@@ -1,20 +1,20 @@
 <?php
-return array(
+return array (
   'version' => 
-  array(
+  array (
     'app' => 
-    array(
+    array (
       'default' => 
-      array(
+      array (
         0 => '001_sites',
         1 => '002_urls',
       ),
     ),
     'module' => 
-    array(
+    array (
     ),
     'package' => 
-    array(
+    array (
     ),
   ),
   'folder' => 'migrations/',

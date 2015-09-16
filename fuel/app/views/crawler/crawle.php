@@ -17,13 +17,13 @@
                 <?php foreach ($results as $res ): ?>
                 <tr>
                     <td><a href="<?php echo $res['authedUrl']; ?>" target="_blank"><?php echo $res['url']; ?></a></td>
-                    <td><?php echo $res['title']['obtain']; ?></td>
-                    <td><?php echo $res['keywords']['obtain']; ?></td>
-                    <td><?php echo $res['description']['obtain']; ?></td>
-                    <td><?php echo $res['canonical']['obtain']; ?></td>
-                    <td><?php echo $res['prev']['obtain']; ?></td>
-                    <td><?php echo $res['next']['obtain']; ?></td>
-                    <td><?php echo $res['author']['obtain']; ?></td>
+                    <td><?php echo $res['title']['obtain']?$res['title']['obtain']:"-"; ?></td>
+                    <td><?php echo $res['keywords']['obtain']?$res['keywords']['obtain']:"-"; ?></td>
+                    <td><?php echo $res['description']['obtain']?$res['description']['obtain']:"-"; ?></td>
+                    <td><?php echo $res['canonical']['obtain']?$res['canonical']['obtain']:"-"; ?></td>
+                    <td><?php echo $res['prev']['obtain']?$res['prev']['obtain']:"-"; ?></td>
+                    <td><?php echo $res['next']['obtain']?$res['next']['obtain']:"-"; ?></td>
+                    <td><?php echo $res['author']['obtain']?$res['author']['obtain']:"-"; ?></td>
                     <td><?php echo $res['statusCode']; ?></td>
                 </tr>
                 <?php endforeach; ?>

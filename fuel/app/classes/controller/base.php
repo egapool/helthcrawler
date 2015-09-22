@@ -10,7 +10,9 @@ class Controller_Base extends Controller_Hybrid
 		$this->template = "template";
 		parent::before();
 
+		$this->css .=  Asset::css("reset.css");
 		$this->css .=  Asset::css("bootstrap.min.css");
+		$this->css .=  Asset::css("style.css");
 		$this->js .=  Asset::js("vendor/jquery.min.js");
 	}
 

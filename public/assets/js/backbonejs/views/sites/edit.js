@@ -1,7 +1,7 @@
 define([
   "backbonejs/helper",
   "backbonejs/mediator",
-  "hbs!/assets/hbs/Sites/Edit",
+  "hbs!Tmpl/Sites/Edit",
   "jquery",
   "backbone"
 ],function(

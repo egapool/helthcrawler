@@ -2,7 +2,7 @@ define([
   "backbonejs/views/sites/item",
   "backbonejs/collections/sites",
   "backbonejs/mediator",
-  "hbs!/assets/hbs/Sites/List",
+  "hbs!Tmpl/Sites/List",
   "jquery",
   "backbone"
 ],function(

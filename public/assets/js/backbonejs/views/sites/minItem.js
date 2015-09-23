@@ -1,5 +1,5 @@
 define([
-  "hbs!/assets/hbs/Sites/MinItem",
+  "hbs!Tmpl/Sites/MinItem",
   "jquery",
   "backbone"
 ],function(

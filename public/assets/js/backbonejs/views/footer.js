@@ -1,5 +1,5 @@
 define([
-  "hbs!/assets/hbs/footer",
+  "hbs!Tmpl/footer",
   "jquery",
   "backbone"
 ], function(

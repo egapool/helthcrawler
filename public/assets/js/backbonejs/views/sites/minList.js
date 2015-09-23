@@ -2,7 +2,7 @@ define([
   "backbonejs/views/sites/minItem",
   "backbonejs/collections/sites",
   "backbonejs/mediator",
-  "hbs!/assets/hbs/Sites/MinList",
+  "hbs!Tmpl/Sites/MinList",
   "jquery",
   "backbone"
 ],function(

@@ -1,6 +1,6 @@
 define([
   "backbonejs/views/sites/edit",
-  "hbs!/assets/hbs/Sites/Item",
+  "hbs!Tmpl/Sites/Item",
   "jquery",
   "backbone"
 ],function(

@@ -15,6 +15,8 @@
     <?php //echo $js ?>
 
     <script src="/assets/js/require_config.js"></script>
-    <script data-main="/assets/js/main.js" src="/assets/js/vendor/require.js"></script>
+    <script data-main="main.js" src="/assets/js/vendor/require.js"></script>
+    <!-- <script src="/assets/js/vendor/require.js"></script> -->
+    <!-- <script src="/assets/js/main-built.js"></script> -->
 </body>
 </html>

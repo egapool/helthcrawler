@@ -1,5 +1,5 @@
 define([
-  "hbs!/assets/hbs/container",
+  "hbs!Tmpl/container",
   "jquery",
   "backbone"
 ], function(

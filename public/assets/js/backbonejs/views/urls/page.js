@@ -1,6 +1,6 @@
 define([
   "backbonejs/views/sites/minList",
-  "hbs!/assets/hbs/Urls/Page",
+  "hbs!Tmpl/Urls/Page",
   "jquery",
   "backbone"
 ],function(

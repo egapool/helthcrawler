@@ -5,7 +5,7 @@ define([
   "backbonejs/views/sites/page",
   "backbonejs/views/urls/page",
   "backbonejs/mediator",
-  "hbs!/assets/hbs/layout",
+  "hbs!Tmpl/layout",
   'jquery',
   'backbone'
 ], function(

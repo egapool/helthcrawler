@@ -1,6 +1,6 @@
 define([
   "backbonejs/mediator",
-  "hbs!/assets/hbs/header",
+  "hbs!Tmpl/header",
   "jquery",
   "backbone"
 ], function(

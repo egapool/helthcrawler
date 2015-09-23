@@ -8,7 +8,7 @@ class Urls
     function up()
     {
         \DBUtil::create_table('urls', array(
-            'id'            => array('type' => 'int',       'constraint' => 5),
+            'id'            => array('type' => 'int',       'constraint' => 5,'auto_increment' => true),
             'site_id'       => array('type' => 'int',       'constraint' => 5),
             'url'           => array('type' => 'varchar',   'constraint' => 255),
             'device'        => array('type' => 'int',       'constraint' => 1),

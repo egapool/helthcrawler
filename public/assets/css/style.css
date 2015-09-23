@@ -1,3 +1,21 @@
+/* color */
+
+.btn-orange {
+  color:#FFF;
+  background-color: #F3825F;
+  border: 1px solid #F3754D;
+}
+.btn-orange:hover {
+  color:#FFF;
+  background-color: #F7A186;
+}
+.label-orange {
+  background-color: #F3825F;
+}
+.label-yellow {
+  background-color: #FFE26F;
+}
+
 #header {
   position: fixed;
   top:0px;
@@ -40,7 +58,11 @@
   font-weight: bold;
 }
 
-
+/* sites */
+#site-add {
+  cursor: pointer;
+  width: 50px;
+}
 #site-edit {
   background-color: rgba(0,0,0,0.6);
   position: fixed;
@@ -80,11 +102,29 @@
 #site-edit .submit {
   text-align: center;
 }
+#site-edit .edit {
+  text-align: center;
+}
 .site-edit-content .cancel {
   position: absolute;
   bottom:5px;
   right:5px;
   cursor: pointer;
+}
+
+.sites-list tbody tr {
+  cursor: pointer;
+}
+.sites-list tbody tr:hover {
+  background-color: #F7F7F7;
+}
+
+.sites-list .delete {
+  color: #ccc;
+}
+
+.sites-list .delete:hover {
+  color:#000;
 }
 
 

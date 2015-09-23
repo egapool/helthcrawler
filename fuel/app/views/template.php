@@ -19,5 +19,7 @@
         Backbone.history.start({pushState:true});
     });
     </script>
+    <script src="/assets/js/require_config.js"></script>
+    <script data-main="/assets/js/main.js" src="/assets/js/vendor/require.js"></script>
 </body>
 </html>

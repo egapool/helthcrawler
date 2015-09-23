@@ -8,7 +8,7 @@ class Sites
     function up()
     {
         \DBUtil::create_table('sites', array(
-            'id'            => array('type' => 'int',       'constraint' => 5),
+            'id'            => array('type' => 'int',       'constraint' => 5,'auto_increment' => true),
             'title'         => array('type' => 'varchar',   'constraint' => 100),
             'domain'        => array('type' => 'varchar',   'constraint' => 100),
             'user'          => array('type' => 'varchar',   'constraint' => 100),

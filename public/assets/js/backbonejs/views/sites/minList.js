@@ -1,16 +1,15 @@
-MyApp.Views.SitesList = Backbone.View.extend({
+MyApp.Views.SitesMinList = Backbone.View.extend({
 
   // el:".sites-list",
 
-  tmpl: MyApp.Templates.Sites.List,
+  tmpl: MyApp.Templates.Sites.MinList,
 
   events: {
   },
 
   initialize: function () {
-    _.bindAll(this,'create');
     this.$el.html(this.tmpl());
-    this.table = this.$('tbody');
+    this.Ul = this.$('ul');
     this.siteList = new MyApp.Collections.SiteList();
     this.siteList.fetch({
       success:function(){
@@ -33,20 +32,8 @@ MyApp.Views.SitesList = Backbone.View.extend({
   },
 
   addOne: function(site){
-    var view = new MyApp.Views.SiteItem({model:site});
-    this.table.append(view.render().el);
+    var view = new MyApp.Views.SiteMinItem({model:site});
+    this.Ul.append(view.render().el);
   },
 
-  create:function(data){
-    this.siteList.create(data,{
-      success: function(model, response, options){
-        console.log(model);
-        MyApp.mediator.trigger('site:editCancel');
-        // model.sync_id(response.id);
-      },
-      error: function(){
-
-      },
-    });
-  },
 });

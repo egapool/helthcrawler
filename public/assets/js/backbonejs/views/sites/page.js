@@ -10,6 +10,9 @@ MyApp.Views.SitesPage = Backbone.View.extend({
     _.bindAll(this,'editable');
     this.isEditing = false;
     this.$el.html(this.tmpl());
+    this.siteList = new MyApp.Views.SitesList({
+      el:this.$('.sites-list'),
+    });
     MyApp.mediator.on('sites:editable',this.editable);
   },
 

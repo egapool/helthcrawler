@@ -1,4 +1,4 @@
-MyApp.Models.Site = Backbone.Model.extend({
+MyApp.Models.Url = Backbone.Model.extend({
 
     defaults: function() {
       return {

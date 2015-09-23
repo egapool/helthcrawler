@@ -9,7 +9,7 @@ return array(
         'connection'   => array(
             'hostname'   => 'localhost',
             'database'   => 'itobot',
-            // 'socket'     => '/var/lib/mysql/mysql.sock',
+            'socket'     => '/var/lib/mysql/mysql.sock',
             'username'   => 'root',
             'password'   => '',
             'port'       => '3306',

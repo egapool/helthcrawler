@@ -1,30 +1,41 @@
-MyApp.Views.SiteItem = Backbone.View.extend({
+define([
+  "backbonejs/views/sites/edit",
+  "hbs!/assets/hbs/Sites/Item",
+  "jquery",
+  "backbone"
+],function(
+  ViewSiteEdit,
+  TmplSiteItem
+){
+  return Backbone.View.extend({
 
-  tagName:"tr",
+    tagName:"tr",
 
-  tmpl: MyApp.Templates.Sites.Item,
+    tmpl: TmplSiteItem,
 
-  events:{
-    'dblclick':'edit',
-    'click .delete':'delete',
-  },
+    events:{
+      'dblclick':'edit',
+      'click .delete':'delete',
+    },
 
-  initialize:function(){
-    this.listenTo(this.model,'change',this.render);
-    this.listenTo(this.model,'destroy',this.remove);
-  },
+    initialize:function(){
+      this.listenTo(this.model,'change',this.render);
+      this.listenTo(this.model,'destroy',this.remove);
+    },
 
-  render: function() {
-    var json = this.model.toJSON();
-    this.$el.html(this.tmpl(json));
-    return this;
-  },
+    render: function() {
+      var json = this.model.toJSON();
+      this.$el.html(this.tmpl(json));
+      this.delegateEvents();
+      return this;
+    },
 
-  edit: function(){
-    new MyApp.Views.SitesEdit({model:this.model});
-  },
+    edit: function(){
+      new ViewSiteEdit({model:this.model});
+    },
 
-  delete: function(){
-    this.model.destroy();
-  }
+    delete: function(){
+      this.model.destroy();
+    }
+  });
 });

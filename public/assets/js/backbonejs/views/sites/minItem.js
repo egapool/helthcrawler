@@ -1,27 +1,35 @@
-MyApp.Views.SiteMinItem = Backbone.View.extend({
+define([
+  "hbs!/assets/hbs/Sites/MinItem",
+  "jquery",
+  "backbone"
+],function(
+  TmplSiteMinItem
+){
+  return Backbone.View.extend({
 
-  tagName:"li",
+    tagName:"li",
 
-  tmpl: MyApp.Templates.Sites.MinItem,
+    tmpl: TmplSiteMinItem,
 
-  events:{
-  },
+    events:{
+    },
 
-  initialize:function(){
-    this.listenTo(this.model,'change',this.render);
-    this.listenTo(this.model,'destroy',this.remove);
-  },
+    initialize:function(){
+      this.listenTo(this.model,'change',this.render);
+      this.listenTo(this.model,'destroy',this.remove);
+    },
 
-  render: function() {
-    var json = this.model.toJSON();
-    this.$el.html(this.tmpl(json));
-    return this;
-  },
+    render: function() {
+      var json = this.model.toJSON();
+      this.$el.html(this.tmpl(json));
+      return this;
+    },
 
-  edit: function(){
-  },
+    edit: function(){
+    },
 
-  delete: function(){
-    this.model.destroy();
-  }
+    delete: function(){
+      this.model.destroy();
+    }
+  });
 });

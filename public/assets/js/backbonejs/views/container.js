@@ -1,19 +1,27 @@
-MyApp.Views.Container = Backbone.View.extend({
+define([
+  "hbs!/assets/hbs/container",
+  "jquery",
+  "backbone"
+], function(
+  TmplContainer
+){
+  return Backbone.View.extend({
 
-  inner: null,
+    inner: null,
 
-  tmpl: MyApp.Templates.Container,
+    tmpl: TmplContainer,
 
-  events: {
-  },
+    events: {
+    },
 
-  initialize: function() {
+    initialize: function() {
 
-    // this.$el.html(this.tmpl());
-  },
+      // this.$el.html(this.tmpl());
+    },
 
-  render: function() {
-    this.$el.html(this.inner.$el);
-    return this;
-  },
+    render: function() {
+      this.$el.html(this.inner.$el);
+      return this;
+    },
+  });
 });

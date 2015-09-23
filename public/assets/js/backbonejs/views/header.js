@@ -1,30 +1,40 @@
-MyApp.Views.Header = Backbone.View.extend({
+define([
+  "backbonejs/mediator",
+  "hbs!/assets/hbs/header",
+  "jquery",
+  "backbone"
+], function(
+  Mediator,
+  TmplHeader
+){
+  return Backbone.View.extend({
 
-  tmpl: MyApp.Templates.header,
+    tmpl: TmplHeader,
 
-  events: {
-    'click .sites':'pushState',
-    'click .urls':'pushState',
-  },
+    events: {
+      'click .sites':'pushState',
+      'click .urls':'pushState',
+    },
 
-  initialize: function () {
-    _.bindAll(this,'toggleActive');
-    this.$el.html(this.tmpl());
-    MyApp.mediator.on('header:toggleActive',this.toggleActive);
-  },
+    initialize: function () {
+      _.bindAll(this,'toggleActive');
+      this.$el.html(this.tmpl());
+      Mediator.on('header:toggleActive',this.toggleActive);
+    },
 
-  pushState:function(e) {
-    var className = e.target.className;
-    this.toggleActive(className);
-    if ( className === 'sites') {
-      className = '';
-    }
-    Backbone.history.navigate('/'+className, true);
-  },
+    pushState:function(e) {
+      var className = e.target.className;
+      this.toggleActive(className);
+      if ( className === 'sites') {
+        className = '';
+      }
+      Backbone.history.navigate('/'+className, true);
+    },
 
-  toggleActive: function(className){
-    this.$('ul li').removeClass('active');
-    this.$('.'+className).addClass('active');
-  },
+    toggleActive: function(className){
+      this.$('ul li').removeClass('active');
+      this.$('.'+className).addClass('active');
+    },
 
+  });
 });

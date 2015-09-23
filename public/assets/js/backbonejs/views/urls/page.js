@@ -1,22 +1,32 @@
-MyApp.Views.UrlsPage = Backbone.View.extend({
+define([
+  "backbonejs/views/sites/minList",
+  "hbs!/assets/hbs/Urls/Page",
+  "jquery",
+  "backbone"
+],function(
+  VeiwSiteMinList,
+  TmplUrlPage
+){
+  return Backbone.View.extend({
 
-  tmpl: MyApp.Templates.Urls.Page,
+    tmpl: TmplUrlPage,
 
-  events: {
-    'click #site-add':'openEdit',
-  },
+    events: {
+      'click #site-add':'openEdit',
+    },
 
-  initialize: function () {
-    this.$el.html(this.tmpl());
-    this.render();
-  },
+    initialize: function () {
+      this.$el.html(this.tmpl());
+      this.render();
+    },
 
-  render: function(){
-    this.siteList = new MyApp.Views.SitesMinList({
-      el:this.$('.sites-list'),
-    });
-    return this;
-  }
+    render: function(){
+      this.siteList = new VeiwSiteMinList({
+        el:this.$('.sites-list'),
+      });
+      return this;
+    }
 
 
+  });
 });

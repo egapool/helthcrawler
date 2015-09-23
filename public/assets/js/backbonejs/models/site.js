@@ -1,4 +1,9 @@
-MyApp.Models.Site = Backbone.Model.extend({
+define([
+  "backbone"
+],function(
+
+){
+  return Backbone.Model.extend({
 
     defaults: function() {
       return {
@@ -8,4 +13,5 @@ MyApp.Models.Site = Backbone.Model.extend({
     sync_id: function(id){
       this.save('id', id, {silent: true});
     },
+  });
 });

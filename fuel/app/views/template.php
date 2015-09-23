@@ -12,13 +12,8 @@
 </head>
 <body>
     <div id="app"></div>
-    <?php echo $js ?>
-    <script>
-    $(function(){
-        var App = new MyApp.Router();
-        Backbone.history.start({pushState:true});
-    });
-    </script>
+    <?php //echo $js ?>
+
     <script src="/assets/js/require_config.js"></script>
     <script data-main="/assets/js/main.js" src="/assets/js/vendor/require.js"></script>
 </body>

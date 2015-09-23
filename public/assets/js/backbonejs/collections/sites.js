@@ -1,6 +1,13 @@
-MyApp.Collections.SiteList = Backbone.Collection.extend({
+define([
+  "backbonejs/models/site",
+  "backbone"
+],function(
+  ModelSite
+){
+  return Backbone.Collection.extend({
 
-  model: MyApp.Models.Site,
+    model: ModelSite,
 
-  url: '/api/sites',
+    url: '/api/sites',
+  });
 });

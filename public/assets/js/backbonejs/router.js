@@ -1,60 +1,78 @@
-MyApp.Router = Backbone.Router.extend({
+define([
+  "backbonejs/views/header",
+  "backbonejs/views/footer",
+  "backbonejs/views/container",
+  "backbonejs/views/sites/page",
+  "backbonejs/views/urls/page",
+  "backbonejs/mediator",
+  "hbs!/assets/hbs/layout",
+  'jquery',
+  'backbone'
+], function(
+  ViewHeader,
+  ViewFooter,
+  ViewContainer,
+  ViewSitesPage,
+  ViewUrlsPage,
+  Mediator,
+  TmplLayout
+){
 
-  el: "#app",
-  tmpl: MyApp.Templates.layout,
+  return Backbone.Router.extend({
 
-  // ビューコンテンツのキャッシュ
-  viewCache: {},
+    el: "#app",
+    tmpl: TmplLayout,
 
-  // ページ制御
-  routes : {
-    ''     : 'sites',
-    'urls' : 'urls',
-  },
+    // ビューコンテンツのキャッシュ
+    viewCache: {},
 
-  initialize: function() {
-    Backbone.emulateJSON = true;
-    this.$el = $(this.el);
+    // ページ制御
+    routes : {
+      ''     : 'sites',
+      'urls' : 'urls',
+    },
 
-    MyApp.mediator = {};
-    _.extend(MyApp.mediator, Backbone.Events);
+    initialize: function() {
+      Backbone.emulateJSON = true;
+      this.$el = $(this.el);
 
-    //moment setting
-    // moment.locale('ja',{
-    //     weekdaysShort:"日_月_火_水_木_金_土".split('_'),
-    //     weekdays:"日_月_火_水_木_金_土".split('_'),
-    // });
+      //moment setting
+      // moment.locale('ja',{
+      //     weekdaysShort:"日_月_火_水_木_金_土".split('_'),
+      //     weekdays:"日_月_火_水_木_金_土".split('_'),
+      // });
 
-    this.$el.html(this.tmpl());
+      this.$el.html(this.tmpl());
 
-    this.header = new MyApp.Views.Header({
-      el: this.$el.find('#header')
-    });
+      this.header = new ViewHeader({
+        el: this.$el.find('#header')
+      });
 
-    this.footer = new MyApp.Views.Footer({
-      el: this.$el.find('#footer')
-    });
+      this.footer = new ViewFooter({
+        el: this.$el.find('#footer')
+      });
 
-    this.contents = new MyApp.Views.Container({el: $('#content')});
+      this.contents = new ViewContainer({el: $('#content')});
 
-  },
+    },
 
-  sites: function(){
-    if ( this.viewCache.sites === undefined  ) {
-      this.viewCache.sites = new MyApp.Views.SitesPage();
-    }
-    this.contents.inner = this.viewCache.sites.render();
-    this.contents.render();
-    MyApp.mediator.trigger('header:toggleActive','sites');
-  },
+    sites: function(){
+      if ( this.viewCache.sites === undefined  ) {
+        this.viewCache.sites = new ViewSitesPage();
+      }
+      this.contents.inner = this.viewCache.sites.render();
+      this.contents.render();
+      Mediator.trigger('header:toggleActive','sites');
+    },
 
-  urls: function(){
-    if ( this.viewCache.urls === undefined  ) {
-      this.viewCache.urls = new MyApp.Views.UrlsPage();
-    }
-    this.contents.inner = this.viewCache.urls.render();
-    this.contents.render();
-    MyApp.mediator.trigger('header:toggleActive','urls');
-  },
+    urls: function(){
+      if ( this.viewCache.urls === undefined  ) {
+        this.viewCache.urls = new ViewUrlsPage();
+      }
+      this.contents.inner = this.viewCache.urls.render();
+      this.contents.render();
+      Mediator.trigger('header:toggleActive','urls');
+    },
 
+  });
 });

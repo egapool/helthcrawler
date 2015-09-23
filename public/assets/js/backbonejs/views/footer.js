@@ -1,8 +1,16 @@
-MyApp.Views.Footer = Backbone.View.extend({
+define([
+  "hbs!/assets/hbs/footer",
+  "jquery",
+  "backbone"
+], function(
+  TmplFooter
+){
+  return Backbone.View.extend({
 
-  tmpl: MyApp.Templates.footer,
+    tmpl: TmplFooter,
 
-  initialize: function () {
-    this.$el.html(this.tmpl());
-  }
+    initialize: function () {
+      this.$el.html(this.tmpl());
+    }
+  });
 });

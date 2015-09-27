@@ -14,6 +14,7 @@
     <div id="app"></div>
     <?php //echo $js ?>
 
+    <script src="/assets/js/vendor/jszip.js"></script>
     <script src="/assets/js/require_config.js"></script>
     <script data-main="main.js" src="/assets/js/vendor/require.js"></script>
     <!-- <script src="/assets/js/vendor/require.js"></script> -->

@@ -1,6 +1,6 @@
 define([
   "backbonejs/views/sites/item",
-  "backbonejs/collections/sites",
+  "backbonejs/Collections/sites",
   "backbonejs/mediator",
   "hbs!Tmpl/Sites/List",
   "jquery",

@@ -13,12 +13,13 @@ define([
 
     tagName: "div",
     id: 'site-edit',
+    className:'edit-layer',
 
     tmpl: TmplSiteEdit,
 
     events: {
       'click':'cancel',
-      'click .site-edit-content':'empty',
+      'click .edit-layer-content':'empty',
       'click .cancel':'cancel',
       'click .submit':'submit',
       'click .edit':'edit',
@@ -41,11 +42,11 @@ define([
 
     render:function(){
       $('body').append(this.el);
-      this.$('.site-edit-inner').animate({'top':'0'},200);
+      this.$('.edit-layer-inner').animate({'top':'0'},200);
     },
 
     cancel: function(){
-      this.$('.site-edit-inner').animate({'top':'-1000'},200,_.bind(function(){
+      this.$('.edit-layer-inner').animate({'top':'-1000'},200,_.bind(function(){
         this.remove();
         Madiator.trigger('sites:editable');
 

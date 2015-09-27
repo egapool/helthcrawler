@@ -15,6 +15,9 @@
 .label-yellow {
   background-color: #FFE26F;
 }
+.label-gray {
+  background-color: #CCC;
+}
 
 #header {
   position: fixed;
@@ -57,13 +60,18 @@
   font-size: 20px;
   font-weight: bold;
 }
+#content h3 {
+  color:#5E5E5E;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 /* sites */
 #site-add {
   cursor: pointer;
   width: 50px;
 }
-#site-edit {
+.edit-layer {
   background-color: rgba(0,0,0,0.6);
   position: fixed;
   top:0px;
@@ -73,12 +81,12 @@
   z-index:1;
 }
 
-.site-edit-inner {
+.edit-layer-inner {
   position: absolute;
   width:100%;
   top:-1000px;
 }
-.site-edit-content {
+.edit-layer-content {
   width:500px;
   background-color: #fff;
   border-radius: 3px;
@@ -105,7 +113,7 @@
 #site-edit .edit {
   text-align: center;
 }
-.site-edit-content .cancel {
+.edit-layer-content .cancel {
   position: absolute;
   bottom:5px;
   right:5px;
@@ -127,12 +135,30 @@
   color:#000;
 }
 
+.sites-list ul li {
+  margin:0 10px 0 0;
+  cursor: pointer;
+  display: inline-block;
+}
 
+.sites-list ul li span.active {
+  background-color: red;
+}
 
+.url-actions .input {
+  cursor: pointer;
+}
 
-
-
-
+#droppable {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: #ccc;
+  border: 2px dashed #ccc;
+  border-radius: 7px;
+  padding: 70px 0px;
+  margin: 20px;
+}
 
 
 

@@ -8,5 +8,6 @@ return array(
 
     'crawle'    => 'crawler/index',
     'api/sites' => 'api/sites/index',
-    'api/sites/(:id)' => 'api/sites/index/$1'
+    'api/sites/(:id)' => 'api/sites/index/$1',
+    'api/urls'  => 'api/urls/index',
 );

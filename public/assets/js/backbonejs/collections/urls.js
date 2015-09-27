@@ -1,6 +1,17 @@
-MyApp.Collections.UrlList = Backbone.Collection.extend({
+define([
+  "backbonejs/models/url",
+  "jquery",
+  "backbone"
+],function(
+  ModelUrl
+){
+  return Backbone.Collection.extend({
 
-  model: MyApp.Models.Url,
+    model: ModelUrl,
 
-  url: '/api/urls',
+    // url: function(){
+    //   return '/api/urls/' + this.options.siteId;
+    // },
+    url: '/api/urls/',
+  });
 });

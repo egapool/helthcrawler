@@ -12,8 +12,8 @@ define([
     tmpl: TmplHeader,
 
     events: {
-      'click .sites':'pushState',
-      'click .urls':'pushState',
+      'click #sites':'pushState',
+      'click #urls':'pushState',
     },
 
     initialize: function () {
@@ -23,17 +23,17 @@ define([
     },
 
     pushState:function(e) {
-      var className = e.target.className;
-      this.toggleActive(className);
-      if ( className === 'sites') {
-        className = '';
+      var id = e.target.id;
+      this.toggleActive(id);
+      if ( id === 'sites') {
+        id = '';
       }
-      Backbone.history.navigate('/'+className, true);
+      Backbone.history.navigate('/'+id, true);
     },
 
-    toggleActive: function(className){
+    toggleActive: function(idName){
       this.$('ul li').removeClass('active');
-      this.$('.'+className).addClass('active');
+      this.$('#'+idName).addClass('active');
     },
 
   });

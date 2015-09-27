@@ -1,4 +1,10 @@
-MyApp.Models.Url = Backbone.Model.extend({
+define([
+  "jquery",
+  "backbone"
+],function(
+
+){
+  return Backbone.Model.extend({
 
     defaults: function() {
       return {
@@ -8,4 +14,5 @@ MyApp.Models.Url = Backbone.Model.extend({
     sync_id: function(id){
       this.save('id', id, {silent: true});
     },
+  });
 });

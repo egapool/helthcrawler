@@ -145,6 +145,9 @@
   background-color: red;
 }
 
+.url-actions {
+  display: none;
+}
 .url-actions .input {
   cursor: pointer;
 }

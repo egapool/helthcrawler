@@ -2,10 +2,8 @@
 
 class Controller_Api_Urls extends Controller_Rest{
 
-    public function get_index()
+    public function get_index($siteId)
     {
-        $get = Input::get();
-        $siteId = $get['siteId'];
         $site = DB::select('id')
             ->from(Model_Site::table())
             ->where('id','=',$siteId)
@@ -22,29 +20,39 @@ class Controller_Api_Urls extends Controller_Rest{
         } else {
             $this->response(array('ok'=>true), 403);
         }
-
     }
 
-    public function post_index()
+    public function put_index($siteId)
     {
+        $put = json_decode(Input::put()['model'],true);
+
+        if ( $this->isExist($siteId) ) {
+            try {
+                DB::transaction_start();
+                DB::commit();
+            } catch ( Exception $e ) {
+                DB::rollback();
+            }
+        } else {
+
+        }
+    }
+
+    public function post_index($siteId)
+    {
+        if ( !$this->isExist($siteId) ) {
+            return $this->response(['ok'=>false,'message'=>'サイトが存在しません'],404);
+        }
         $post = json_decode(Input::post()['model'],true);
-        $post['created_at'] = time();
-        $post['updated_at'] = time();
+        $created_at = time();
+        $updated_at = time();
+
         try {
-            DB::insert(Model_Site::table())
-                ->set($post)
-                ->execute();
+            foreach ( $post as $data ) {
+                $this->insert($siteId,$data,$created_at,$updated_at);
+            }
 
-            $new = DB::select('id')
-                ->from(Model_Site::table())
-                ->order_by('created_at','DESC')
-                ->limit(1)
-                ->execute()
-                ->current();
-
-            return $this->response(array(
-                'id' => $new['id'],
-            ));
+            return $this->response(['ok'=>true],200);
         } catch(Exception $e) {
             return $this->response(array(
                 'ok' => false,
@@ -55,32 +63,26 @@ class Controller_Api_Urls extends Controller_Rest{
         var_dump($post);die;
     }
 
-    public function put_index($id)
+    private function insert($siteId,$data,$created_at,$updated_at)
     {
-        $put = json_decode(Input::put()['model'],true);
-        $data = array(
-            'title'      => $put['title'],
-            'domain'     => $put['domain'],
-            'user'       => $put['user'],
-            'pass'       => $put['pass'],
-            'updated_at' => time(),
+        $save_data = array(
+            'site_id'      => $siteId,
+            'url'         => $data['url'],
+            'device'      => $data['device'],
+            'title'       => $data['title'],
+            'keywords'    => $data['keywords'],
+            'description' => $data['description'],
+            'canonical'   => $data['canonical'],
+            'prev'        => $data['prev'],
+            'next'        => $data['next'],
+            'author'      => $data['author'],
+            'created_at'  => $created_at,
+            'updated_at'  => $updated_at,
         );
 
-        try {
-            DB::update(Model_Site::table())
-                ->set($data)
-                ->where('id','=',$id)
-                ->execute();
-            return $this->response(array(
-                'ok' => true,
-            ));
-        } catch (Exception $e) {
-            return $this->response(array(
-                'ok' => false,
-                'message' => $e->getMessage(),
-            ),
-            500);
-        }
+        DB::insert(Model_Url::table())
+            ->set($save_data)
+            ->execute();
     }
 
     public function delete_index($id)
@@ -89,5 +91,15 @@ class Controller_Api_Urls extends Controller_Rest{
             ->where('id','=',$id)
             ->execute();
         $this->response(array('ok'=>true),200);
+    }
+
+    private function isExist($siteId)
+    {
+        $site = DB::select('id')
+            ->from(Model_Site::table())
+            ->where('id','=',$siteId)
+            ->execute()
+            ->current();
+        return !empty($site);
     }
 }

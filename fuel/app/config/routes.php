@@ -10,4 +10,5 @@ return array(
     'api/sites' => 'api/sites/index',
     'api/sites/(:id)' => 'api/sites/index/$1',
     'api/urls'  => 'api/urls/index',
+    'api/urls/(:id)'  => 'api/urls/index/$1',
 );

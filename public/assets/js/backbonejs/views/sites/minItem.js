@@ -39,6 +39,7 @@ define([
         model.set('active',false);
       });
       this.model.set('active',true);
+      $('.url-actions').fadeIn();
       Mediator.trigger('url:fetch',this.model);
     },
   });
